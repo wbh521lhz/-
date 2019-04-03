@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1></h1>
+    <script>
+        setInterval(function () {
+            var h1 = document.querySelector("h1")
+            let dat = new Date().getTime();
+            let now = new Date("2019-6-16").getTime();
+            let difference = now - dat;
+            let Seconds = Math.floor(difference / 1000);
+            let Minutes = Math.floor(Seconds / 60);
+            let seconds = Seconds % 60;
+            let Hours = Math.floor(Minutes / 60);
+            let minutes = Minutes % 60;
+            let day = Math.floor(Hours/24);
+            let hours = Hours%24;
+            let time = day + ":" + hours + ":" + minutes + ":" + seconds;
+            h1.innerHTML = time
+        }, 1000)
+    </script>
+</body>
+
+</html>
