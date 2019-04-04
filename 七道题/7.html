@@ -11,30 +11,32 @@
 
 <body>
     <div id="app">
-        <form @submit.prevent="insert">
-            <span>姓名：</span><input type="text" v-model="formData.name">
-            <span>性别：</span> <input type="text" v-model="formData.sex">
-            <span>年龄：</span> <input type="text" v-model="formData.age">
-            <span>成绩：</span> <input type="text" v-model="formData.achievement">
+        <form @submit.prevent="inest">
+            <span>姓名：</span><input type="text" v-model="all.name">
+            <span>性别：</span><input type="text" v-model="all.age">
+            <span>年龄：</span><input type="text" v-model="all.sex">
+            <span>成绩：</span><input type="text" v-model="all.grade">
             <input type="submit">
         </form>
-        <table class="table table-striped">
+        <table class="table">
             <thead>
-                <th>姓名</th>
-                <th>性别</th>
-                <th>年龄</th>
-                <th>成绩</th>
-                <th>修改</th>
-                <th>删除</th>
+                <tr>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>成绩</th>
+                    <th>修改</th>
+                    <th>删除</th>
+                </tr>
             </thead>
             <tbody>
-                <tr v-for="value,index in list">
-                    <td>{{value.name}}</td>
-                    <td>{{value.sex}}</td>
-                    <td>{{value.age}}</td>
-                    <td>{{value.achievement}}</td>
+                <tr v-for="valur,index in list">
+                    <td>{{valur.name}}</td>
+                    <td>{{valur.age}}</td>
+                    <td>{{valur.sex}}</td>
+                    <td>{{valur.grade}}</td>
                     <td>
-                        <button @click="edit(index)">修改</button>
+                        <button @click="modify(index)">修改</button>
                     </td>
                     <td>
                         <button @click="del(index)">删除</button>
@@ -43,41 +45,42 @@
             </tbody>
         </table>
     </div>
-    <script src="vue.js"></script>
-    <script>
-        //引用类型问题
-        new Vue({
-            el: "#app",
-            data: {
-                formData: {
-                    name: '',
-                    sex: '',
-                    age: '',
-                    achievement: ''
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                all: {
+                    name: "",
+                    age: "",
+                    sex: "",
+                    grade: "",
                 },
                 list: []
-            },
-            methods: {
-                insert() {
-                    let obj = {};
-                    obj.name = this.formData.name;
-                    obj.sex = this.formData.sex;
-                    obj.age = this.formData.age;
-                    obj.achievement = this.formData.achievement;
-                    this.list.push(obj);
-                },
-                del(i) {
-                    if (confirm("是否删除数据？")) {
-                        this.list.splice(i, 1)
-                    }
-                },
-                edit(i) {
-                    let achievement = prompt("请输入要修改的成绩");
-                    this.list[i].achievement = achievement;
-                }
             }
-        })
-    </script>
-</body>
+        },
+        methods: {
+            inest() {
+                let a = {};
+                a.name = this.all.name;
+                a.age = this.all.age;
+                a.sex = this.all.sex;
+                a.grade = this.all.grade;
+                this.list.push(a)
+            },
+            del(i) {
+                if (confirm("是否确认删除数据")) {
+                    this.list.splice(i, 1)
+                }
+            },
+            modify(i) {
+                let grade = prompt("请输入要修改的数据");
+                this.list[i].grade = grade
+            }
+        },
+    })
+</script>
 
 </html>

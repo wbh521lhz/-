@@ -5,42 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        input{
-            border: 1px solid red;
-            font-weight: bolder;
-        }
-    </style>
 </head>
+<style>
+    
+</style>
 <body>
     <div id="app">
-        <div>
-        <img :src="imgSrc">
-        </div>
-        <input type="button" @click="img1" value="1">
-        <input type="button" @click="img2" value="2">
-        <input type="button" @click="img3" value="3">
-        <input type="button" @click="img4" value="4">
+        <img  :src="img">
+        <input type="button" value="1"@click="img1">
+        <input type="button" value="2"@click="img2">
+        <input type="button" value="3"@click="img3">
+        <input type="button" value="4"@click="img4">
     </div>
     <script src="vue.js"></script>
     <script>
         new Vue({
             el:"#app",
-            data:{
-                imgSrc:"1.jpg"
+            data() {
+                return {
+                  img:"1.jpg"  
+                }
             },
             methods: {
                 img1(){
-                    this.imgSrc="1.jpg"
+                    this.img="1.jpg"
                 },
                 img2(){
-                    this.imgSrc="2.jpg"
+                    this.img="2.jpg"
                 },
                 img3(){
-                    this.imgSrc="3.jpg"
+                    this.img="3.jpg"
                 },
                 img4(){
-                    this.imgSrc="4.jpg"
+                    this.img="4.jpg"
                 }
             },
         })

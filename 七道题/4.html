@@ -10,28 +10,29 @@
 
 <body>
     <div id="app">
-        <span>{{year}}</span>:
-        <span>{{month}}</span>:
-        <span>{{dat}}</span>:
-        <span>{{hours}}</span>:
-        <span>{{minutes}}</span>:
-        <span>{{seconds}}</span>
+        <span>{{year}}</span>年
+        <span>{{month}}</span>月
+        <span>{{dat}}</span>日
+        <span>{{hours}}</span>时
+        <span>{{minutes}}</span>分
+        <span>{{seconds}}</span>秒
     </div>
     <script src="vue.js"></script>
     <script>
         new Vue({
             el: "#app",
-            data: {
-                year:'',
-                month:'',
-                dat:'',
-                hours: '',
-                minutes: '',
-                seconds: '',
+            data() {
+                return {
+                    year: '',
+                    month: '',
+                    dat: '',
+                    hours: '',
+                    minutes: '',
+                    seconds: '',
+                }
             },
             mounted() {
-                let target = new Date("2019-6-6").getTime(); //获取目标时间戳
-                setInterval(() => {
+                setInterval(()=>{
                     let date = new Date();
                     let year = date.getFullYear();
                     let month = date.getMonth();
@@ -40,13 +41,13 @@
                     let minutes = date.getMinutes();
                     let seconds = date.getSeconds();
                     this.year = year;
-                    this.month = month;
+                    this.month = month+1;
                     this.dat = dat;
                     this.hours = hours;
-                    this.minutes = minutes;
-                    this.seconds = seconds;
-                }, 1000)
-            }
+                    this.minutes= minutes;
+                    this.seconds=seconds;
+                },100)
+            },
         })
     </script>
 </body>

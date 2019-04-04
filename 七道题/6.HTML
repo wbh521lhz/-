@@ -9,56 +9,25 @@
 </head>
 
 <body>
-    <!-- <div id="app">
-        <h1>{{name}}</h1>
-        <input type="button" value="点击" @click="modif">
-    </div>
-    <script src="vue.js"></script>
-    <script>
-        new Vue({
-            el: "#app",
-            data: {
-                name: "幸运观众",
-                list: ["王博辉", "廖峰", "姜凯生", "王春鑫", "唐超", "田宇皓", "马圣秦"]
-            },
-            methods: {
-                modif() {
-                    var i = Math.floor(Math.random() * this.list.length)
-                    this.name = this.list[i]
-
-
-                    
-                }
-            }
-        })
-    </script> -->
-
     <div id="app">
-        <h1>{{list}}</h1>
-        <input type="button" @click="name" value="点名">
-        <input type="button" @click="end" value="结束">
+        <h1>{{modif}}</h1>
+        <input type="button" value="点名" @click="getname">
     </div>
     <script src="vue.js"></script>
     <script>
         new Vue({
             el: "#app",
-            data: {
-                list: "",
-                modif: "",
+            data() {
+                return {
+                    list: ["王博辉", "廖峰", "姜凯生", "王春鑫", "唐超", "田宇皓", "马圣秦"],
+                    modif: "随机点名"
+                }
             },
             methods: {
-                name() {
-                    var people = ["王博辉", "廖峰", "姜凯生", "王春鑫", "唐超", "田宇皓", "马圣秦"]
-                    this.modif = setInterval(() => {
-                        var i = Math.floor(Math.random() * people.length);
-                        this.list = people[i]
-                    }, 10)
+                getname() {
+                    var i =  Math.floor(Math.random() * this.list.length);
+                    this.modif=this.list[i];
                 },
-                end() {
-                    clearInterval(this.modif);
-                    // clearInterval(this.is);
-                }
-                
             },
         })
     </script>

@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
     <div id="app">
-        <input type="button" value="+" @click=plus(1)>
+        <button @click=jia(1)>+</button>
         <span>{{yi}}</span>
-        <input type="button" value="-" @click=minus(1)>
+        <button @click=jian(1)>-</button>
     </div>
     <script src="vue.js"></script>
     <script>
-        new Vue({
-            el: "#app",
-            data: {
-                yi: 0,
-            },
-            methods: {
-                plus: function (num) {
-                    this.yi += num
-                },
-                minus: function (num) {
-                    this.yi = this.yi - num + 1
-                    this.yi--
-                }
-            }
-        })
+       new Vue({
+           el:"#app",
+           data:{
+               yi:0
+           },
+           methods: {
+               jia:function(num){
+                   if(num!=""){
+                    this.yi+=num
+                   }else{
+                       this.yi++
+                   }
+               },
+               jian:function(num){
+                   if(num!=""){
+                    this.yi-=num
+                   }else{
+                       this.yi--
+                   }
+               }
+           },
+       })
     </script>
 </body>
-
 </html>
